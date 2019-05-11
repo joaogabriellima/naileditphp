@@ -21,6 +21,10 @@ $(document).ready(function() {
                 CleanForm();
             });
         }
+        else {
+            $('#pointsuccess').text('');
+            $('#pointerror').text('Preencha os dados corretamente.');
+        }
     });
     
     function CleanForm() {

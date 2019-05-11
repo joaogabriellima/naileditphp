@@ -52,7 +52,7 @@
           <button type="button" class="btn btn-nofill btn-collapse" data-target="#cadPromo">CADASTRO PROMOÇÕES</button>
           <button type="button" class="btn btn-nofill btn-collapse" data-target="#addPontos">ADICIONAR PONTOS</button>
           <button type="button" class="btn btn-nofill btn-collapse" data-target="#cadVenda">VENDER UM SERVIÇO</button>
-          <button type="button" class="btn btn-nofill btn-collapse" data-target="#catalogo">CATÁLOGO</button>
+          <button type="button" class="btn btn-nofill btn-collapse" data-target="#catalogo" id="btncatalogo">CATÁLOGO</button>
         </div>
       </div>
     </div>
@@ -142,14 +142,14 @@
                   <span class="focus-input100"></span>
                 </div>
 
-              <div class="container-login100-form-btn">
-                <button class="login100-form-btn" style="margin: 0 auto;" id="cadpromo" name="cadpromo"> 
-                  Cadastrar
-                </button>
-              </div>
+                <div class="container-login100-form-btn">
+                  <button class="login100-form-btn" style="margin: 0 auto;" id="cadpromo" name="cadpromo"> 
+                    Cadastrar
+                  </button>
+                </div>
 
-              <span class="txt1 p-b-11 text-success" style="color: green; margin-top: 15px;" id="promosuccess" name="promosuccess"></span>
-              <span class="txt1 p-b-11 text-danger" style="color: red; margin-top: 15px; text-transform: capitalize;" id="promoerror" name="promoerror"></span>
+                <span class="txt1 p-b-11 text-success" style="color: green; margin-top: 15px;" id="promosuccess" name="promosuccess"></span>
+                <span class="txt1 p-b-11 text-danger" style="color: red; margin-top: 15px; text-transform: capitalize;" id="promoerror" name="promoerror"></span>
 
               </form>
             </div>
@@ -164,57 +164,57 @@
   ADICIONAR PONTOS#########
   ============================-->
   
-        <div class="collapse" id="addPontos">
-          <div class="limiter">
-           <div class="container-login100">
-            <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-                <span class="login100-form-title p-b-32">
-                  Adição de Pontos
-                </span>
+<div class="collapse" id="addPontos">
+  <div class="limiter">
+    <div class="container-login100">
+      <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+        <form class="validate-form">
+          <span class="login100-form-title p-b-32">
+            Adição de Pontos
+           </span>
 
-                <span class="txt1 p-b-11">
-                  Por favor, selecione um cliente abaixo:
-                </span>
+          <span class="txt1 p-b-11">
+            Por favor, selecione um cliente abaixo:
+          </span>
 
-                        <?php 
-                            $db = mysqli_connect('localhost', 'root', '', 'nailedit');
+          <?php 
+            $db = mysqli_connect('localhost', 'root', '', 'nailedit');
                             
-                            $sql = "SELECT * FROM cliente";
-                            $result = mysqli_query($db, $sql);
+            $sql = "SELECT * FROM cliente";
+            $result = mysqli_query($db, $sql);
 
-                            echo "<div class='form-group'>";
-                            echo "<select class='form-control' id='dropclient' name='dropclient'>";
-                            echo "<option></option>";
-                            while ($row = mysqli_fetch_array($result)) {
-                                echo "<option value='" . $row['Id'] . "'>" . $row['Nome'] . " - CPF: " . $row['CPF'] .  "</option>";
-                            }
-                            echo "</select>";
-                            echo "</div>";
-                        ?>
+            echo "<div class='form-group wrap-input100 validate-input' data-validate='Por favor, selecione um cliente'>";
+            echo "<select class='form-control' id='dropclient' name='dropclient'>";
+            echo "<option></option>";
+              while ($row = mysqli_fetch_array($result)) {
+                echo "<option value='" . $row['Id'] . "'>" . $row['Nome'] . " - CPF: " . $row['CPF'] .  "</option>";
+              }
+            echo "</select>";
+            echo "</div>";
+          ?>
                     
 
-                <span class="txt1 p-b-11">
-                  Digite abaixo quantos pontos adicionar a carteira dele:
-                </span>
-
-                <div class="wrap-input100 validate-input m-b-36" data-validate = "Favor inserir quantidade de pontos.">
-                  <input class="input100" type="text" id="pointsCliente" name="pointsCliente" >
-                  <span class="focus-input100"></span>
-                </div>
-
-                <div class="container-login100-form-btn">
-                  <button class="login100-form-btn" style="margin: 0 auto;" id="cadpontos" name="cadpontos">
-                    Adicionar Pontos
-                  </button>
-                </div>
-
-                <span class="txt1 p-b-11 text-success" style="color: green; margin-top: 15px;" id="pointsuccess" name="pointsuccess"></span>
-              <span class="txt1 p-b-11 text-danger" style="color: red; margin-top: 15px; text-transform: capitalize;" id="pointerror" name="pointerror"></span>
-              
-            </div>
+          <span class="txt1 p-b-11">
+            Digite abaixo quantos pontos adicionar a carteira dele:
+          </span>
+          <div class="wrap-input100 validate-input m-b-12" data-validate = "Favor inserir quantidade de pontos">
+            <input class="input100" type="number" id="pointsCliente" name="pointsCliente" >
+            <span class="focus-input100"></span>
           </div>
-        </div>
-        </div>
+
+          <div class="container-login100-form-btn">
+            <button class="login100-form-btn" style="margin: 0 auto;" id="cadpontos" name="cadpontos">
+              Adicionar Pontos
+            </button>
+          </div>
+
+          <span class="txt1 p-b-11 text-success" style="color: green; margin-top: 15px;" id="pointsuccess" name="pointsuccess"></span>
+          <span class="txt1 p-b-11 text-danger" style="color: red; margin-top: 15px; text-transform: capitalize;" id="pointerror" name="pointerror"></span>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
   <!--==========================
   FIM PONTOS#########
   ============================-->
@@ -223,60 +223,92 @@
     <!--==========================
   VENDAS#########
   ============================-->
-    <form method="post" action="insertVendas.php">
-        <div class="collapse" id="cadVenda">
-          <div class="limiter">
-           <div class="container-login100">
-            <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-              <form class="login100-form validate-form flex-sb flex-w">
-                <span class="login100-form-title p-b-32">
-                  Escolhendo o serviço
-                </span>
+ <div class="collapse" id="cadVenda">
+  <div class="limiter">
+    <div class="container-login100">
+      <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+        <form class="validate-form">
+          <span class="login100-form-title p-b-32">
+            Escolhendo o serviço
+          </span>
 
-                <span class="txt1 p-b-11">
-                  Por favor, selecione um cliente abaixo:
-                </span>
+          <span class="txt1 p-b-11">
+            Por favor, selecione um cliente abaixo:
+          </span>
 
-                        <?php 
-                            $db = mysqli_connect('localhost', 'root', '', 'nailedit');
+          <?php 
+            $db = mysqli_connect('localhost', 'root', '', 'nailedit');
                             
-                            $sql = "SELECT * FROM cliente";
-                            $result = mysqli_query($db, $sql);
+            $sql = "SELECT * FROM cliente";
+            $result = mysqli_query($db, $sql);
 
-                            echo "<div class='form-group'>";
-                            echo "<select class='form-control' id='clientdrop' name='clientdrop'>";
-                            echo "<option></option>";
-                            while ($row = mysqli_fetch_array($result)) {
-                                echo "<option value='" . $row['Id'] . "'>" . $row['Nome'] . " - CPF: " . $row['CPF'] .  "</option>";
-                            }
-                            echo "</select>";
-                            echo "</div>";
-                        ?>
+            echo "<div class='form-group validate-input' data-validate='Por favor, selecione um cliente'>";
+            echo "<select class='form-control' id='clientdrop' name='clientdrop'>";
+            echo "<option></option>";
+              while ($row = mysqli_fetch_array($result)) {
+                echo "<option value='" . $row['Id'] . "'>" . $row['Nome'] . " - CPF: " . $row['CPF'] .  "</option>";
+              }
+            echo "</select>";
+            echo "</div>";
+          ?>
                     
 
-                <span class="txt1 p-b-11">
-                  E qual serviço ele deseja?
-                </span>
+            <span class="txt1 p-b-11">
+              E qual serviço ele deseja?
+            </span>
 
-                <div class="form-group">
-                  <select class='form-control' id='dropservice' name='dropservice'>
-                  <option></option>
-                  </select>
-                </div>
-
-                <div class="container-login100-form-btn">
-                  <button class="login100-form-btn">
-                    Descontar Pontos
-                  </button>
-                </div>
-
-              </form>
+            <div class="form-group validate-input" data-validate="Por favor, selecione um serviço">
+              <select class='form-control' id='dropservice' name='dropservice'>
+                <option></option>
+              </select>
             </div>
-          </div>
-        </div>
+
+            <div class="container-login100-form-btn">
+              <button class="login100-form-btn" style="margin: 0 auto;" id="cadvenda" name="cadvenda">
+                Descontar Pontos
+              </button>
+            </div>
+
+            <span class="txt1 p-b-11 text-success" style="color: green; margin-top: 15px;" id="vendasuccess" name="vendasuccess"></span>
+            <span class="txt1 p-b-11 text-danger" style="color: red; margin-top: 15px; text-transform: capitalize;" id="vendaerror" name="vendaerror"></span>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
   <!--==========================
   FIM VENDAS#########
   ============================-->
+
+
+<!-- CATALOGO -->
+
+<div class="collapse" id="catalogo">
+  <div class="limiter">
+
+  <section id="services">
+    <div class="container wow fadeInUp">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="section-title">Nosso catálogo</h3>
+          <div class="section-title-divider"></div>
+          <p class="section-description">Todos os serviços abaixo estão disponíveis para compra</p>
+        </div>
+      </div>
+
+      <div class="row" id="allServices">
+      </div>
+    </div>
+  </section>
+
+
+
+  </div>
+</div>
+
+
+<!-- FIM CATALOGO -->
+
 
   <!--==========================
   Footer
@@ -338,10 +370,11 @@
   <!--===============================================================================================-->
   <script src="layout/js/main.js"></script>
 
-  <script src="scripts/script.js"></script>
   <script src="scripts/cliente.js"></script>
   <script src="scripts/promocao.js"></script>
   <script src="scripts/addpontos.js"></script>
+  <script src="scripts/vendas.js"></script>
+  <script src="scripts/catalogo.js"></script>
 
 </body>
 </html>
